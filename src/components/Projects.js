@@ -8,16 +8,30 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiBriefcase } from 'react-icons/fi';
-import TiltCard from './TiltCard';
+import Magnetic from './Magnetic';
 import styles from '../styles/Projects.module.css';
 
-const filters = ['All', 'Frontend', 'Backend', 'API-based Project'];
+const filters = ['All', 'Frontend', 'Backend', 'API Integrations'];
 
 const projects = [
   {
+    id: 4,
+    title: 'Meal Explorer',
+    description: 'Dynamic recipe discovery app fetching culinary data from an API. Search and explore diverse global cuisines.',
+    tags: ['React', 'REST API', 'JavaScript'],
+    category: 'API Integrations',
+    github: 'https://github.com/Sarthak-Khalasi-dev/Meal-Explorer',
+    live: 'https://mealexplorervlone.netlify.app',
+    image: '/assets/meal-explorer.png',
+    gradient: 'linear-gradient(135deg, #0a1a0a 0%, #1a2e1a 50%, #0a2d0a 100%)',
+    accentColor: '#68d391',
+    featured: true,
+    keyLearnings: 'Learned efficient API state management and asynchronous data fetching in React.'
+  },
+  {
     id: 1,
     title: 'Tissot Clone',
-    description: 'A meticulously crafted clone of the Tissot watch website, featuring a responsive design and smooth user interface. It highlights premium watch collections with stunning visuals and interactive elements.',
+    description: 'A meticulously crafted clone of the Tissot watch website, featuring a responsive design and smooth user interface.',
     tags: ['React', 'CSS', 'Frontend'],
     category: 'Frontend',
     github: 'https://github.com/Sarthak-Khalasi-dev/tissot',
@@ -26,11 +40,12 @@ const projects = [
     gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
     accentColor: '#61dafb',
     featured: true,
+    keyLearnings: 'Mastered responsive layouts and complex CSS animations for premium brand aesthetics.'
   },
   {
     id: 2,
     title: 'Stripe Clone',
-    description: 'A pixel-perfect replica of the Stripe payment platform homepage. It showcases advanced CSS techniques, intricate animations, and a modern, clean aesthetic tailored for fintech web design.',
+    description: 'A pixel-perfect replica of the Stripe platform. It showcases advanced CSS techniques and intricate animations.',
     tags: ['React', 'CSS Animations', 'UI/UX'],
     category: 'Frontend',
     github: 'https://github.com/Sarthak-Khalasi-dev/stripe-clone',
@@ -39,11 +54,12 @@ const projects = [
     gradient: 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)',
     accentColor: '#c8a96e',
     featured: true,
+    keyLearnings: 'Deep dive into Framer Motion and layered CSS for clean, corporate-grade interactivity.'
   },
   {
     id: 3,
     title: 'HubSpot Academy Clone',
-    description: 'A comprehensive frontend clone of HubSpot Academy\'s educational portal. It features structured layouts, course catalog displays, and a user-friendly interface designed for an engaging learning experience.',
+    description: 'A comprehensive frontend clone of HubSpot Academy\'s portal. Features structured layouts and engaging UI.',
     tags: ['React', 'Frontend Design', 'Education'],
     category: 'Frontend',
     github: 'https://github.com/Sarthak-Khalasi-dev/Hubspot-academy',
@@ -52,19 +68,7 @@ const projects = [
     gradient: 'linear-gradient(135deg, #1a0533 0%, #2d1b4e 50%, #4a0080 100%)',
     accentColor: '#b794f4',
     featured: false,
-  },
-  {
-    id: 4,
-    title: 'Meal Explorer',
-    description: 'An interactive web application that fetches dynamic culinary data from an external API. Users can search for various meals, view detailed recipes, and explore a rich database of global cuisines.',
-    tags: ['React', 'REST API', 'JavaScript'],
-    category: 'API-based Project',
-    github: 'https://github.com/Sarthak-Khalasi-dev/Meal-Explorer',
-    live: 'https://mealexplorervlone.netlify.app',
-    image: '/assets/meal-explorer.png',
-    gradient: 'linear-gradient(135deg, #0a1a0a 0%, #1a2e1a 50%, #0a2d0a 100%)',
-    accentColor: '#68d391',
-    featured: true,
+    keyLearnings: 'Implemented complex multi-column layouts and maintained pixel-perfection across viewports.'
   },
 ];
 
@@ -80,40 +84,46 @@ const cardVariants = {
 function ProjectCard({ project, index }) {
   const [hovered, setHovered] = useState(false);
   return (
-    <TiltCard intensity={12}>
+    <Magnetic intensity={0.1}>
       <motion.div
         className={`${styles.card} ${project.featured ? styles.featured : ''}`}
         custom={index}
         variants={cardVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-50px' }}
         exit="exit"
-        layout
         onHoverStart={() => setHovered(true)}
         onHoverEnd={() => setHovered(false)}
         style={{ '--accent': project.accentColor }}
       >
-        {/* Visual preview area */}
+        {/* Visual preview area with Device Mockup & Zoom */}
         <div className={styles.cardVisual} style={{ background: project.gradient }}>
-          {project.image && (
-             <img 
-               src={project.image} 
-               alt={project.title} 
-               style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0, opacity: 0.8 }} 
-             />
-          )}
-          {/* Grid decoration */}
-          <div className={styles.cardGrid} />
-          {/* Project title overlay */}
-          <div className={styles.cardLetters}>
-            {project.title.slice(0, 2).toUpperCase()}
+          <div className={styles.mockupContainer}>
+            <div className={styles.browserFrame}>
+              <div className={styles.browserDots}>
+                <span /> <span /> <span />
+              </div>
+              <div className={styles.browserContent}>
+                {project.image && (
+                  <motion.img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className={styles.projectImage}
+                    animate={{ scale: hovered ? 1.05 : 1 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.8, 0.25, 1] }}
+                  />
+                )}
+              </div>
+            </div>
           </div>
+          
           {/* Hover overlay with links */}
           <motion.div
             className={styles.overlay}
             initial={{ opacity: 0 }}
             animate={{ opacity: hovered ? 1 : 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.3 }}
           >
             <div className={styles.overlayLinks}>
               {project.live && (
@@ -126,6 +136,7 @@ function ProjectCard({ project, index }) {
               </a>
             </div>
           </motion.div>
+          
           {/* Featured badge */}
           {project.featured && (
             <span className={styles.featuredBadge}>⭐ Featured</span>
@@ -134,26 +145,24 @@ function ProjectCard({ project, index }) {
 
         {/* Card body */}
         <div className={styles.cardBody}>
+          <div className={styles.cardHeader}>
+            <span className={styles.categoryTag}>{project.category}</span>
+          </div>
           <h3 className={styles.cardTitle}>{project.title}</h3>
           <p className={styles.cardDesc}>{project.description}</p>
+          
+          <div className={styles.learnings}>
+            <span className={styles.learningLabel}>Key Learning:</span> {project.keyLearnings}
+          </div>
+
           <div className={styles.tags}>
             {project.tags.map(tag => (
               <span key={tag} className={styles.tag}>{tag}</span>
             ))}
           </div>
-          <div className={styles.cardLinks}>
-            <a href={project.github} target="_blank" rel="noreferrer" className={styles.iconLink}>
-              <FiGithub /> Code
-            </a>
-            {project.live && (
-              <a href={project.live} target="_blank" rel="noreferrer" className={styles.iconLink}>
-                <FiExternalLink /> Demo
-              </a>
-            )}
-          </div>
         </div>
       </motion.div>
-    </TiltCard>
+    </Magnetic>
   );
 }
 
@@ -167,7 +176,7 @@ export default function Projects() {
     : projects.filter(p => p.category === activeFilter);
 
   return (
-    <div className={`section ${styles.projects}`}>
+    <div className={`section ${styles.projects}`} id="projects">
       <div className="container">
         {/* Header */}
         <motion.div
@@ -205,8 +214,8 @@ export default function Projects() {
         </motion.div>
 
         {/* Project grid */}
-        <motion.div className={styles.grid} layout>
-          <AnimatePresence mode="popLayout">
+        <motion.div className={styles.grid}>
+          <AnimatePresence mode="wait">
             {filtered.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />
             ))}

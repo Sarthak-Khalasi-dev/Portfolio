@@ -3,7 +3,7 @@
  * Assembles all sections of the portfolio in order.
  * Uses framer-motion for page-level animations.
  */
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -12,12 +12,29 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Education from './components/Education';
+import Capabilities from './components/Capabilities';
 import ThreeBackground from './components/ThreeBackground';
+import CustomCursor from './components/CustomCursor';
+import ScrollProgress from './components/ScrollProgress';
+import PreLoader from './components/PreLoader';
+import AIAssistant from './components/AIAssistant';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
+  const [loading, setLoading] = React.useState(true);
+
   return (
     <BrowserRouter>
       <div className="App" style={{ position: 'relative' }}>
+        <AnimatePresence mode="wait">
+          {loading && <PreLoader onComplete={() => setLoading(false)} />}
+        </AnimatePresence>
+        
+        <div className="glow-aura glow-1" />
+        <div className="glow-aura glow-2" />
+        <CustomCursor />
+        <ScrollProgress />
         {/* ---- Global 3D background — fixed behind ALL sections ---- */}
         <ThreeBackground
           style={{
@@ -37,10 +54,14 @@ function App() {
         <main style={{ position: 'relative', zIndex: 1 }}>
           <section id="hero"><Hero /></section>
           <section id="about"><About /></section>
+          <section id="capabilities"><Capabilities /></section>
+          <section id="education"><Education /></section>
           <section id="skills"><Skills /></section>
           <section id="projects"><Projects /></section>
           <section id="contact"><Contact /></section>
         </main>
+
+        <AIAssistant />
 
         {/* Site footer */}
         <Footer />

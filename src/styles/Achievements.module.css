@@ -1,0 +1,88 @@
+.achievements {
+  position: relative;
+  padding: 100px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.card {
+  padding: 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: var(--accent-primary);
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+}
+
+.title {
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.platform {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.githubStats {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.ghTitle {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.ghPlaceholder {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.ghChart {
+  max-width: 100%;
+  filter: invert(1) hue-rotate(180deg);
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 1.5rem;
+  }
+}

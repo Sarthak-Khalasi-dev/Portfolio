@@ -82,9 +82,6 @@ export default function Footer() {
           <p className={styles.copy}>
             © {year} Sarthak Khalasi. All rights reserved.
           </p>
-          <p className={styles.madeWith}>
-            Made with <FiHeart className={styles.heart} /> using React & Framer Motion
-          </p>
         </div>
       </div>
     </footer>

@@ -15,8 +15,8 @@ import styles from '../styles/About.module.css';
 
 const stats = [
   { value: '10+', label: 'Projects Built' },
-  { value: '0+', label: 'Years Experience' },
-  { value: '15+', label: 'Technologies Used' },
+  { value: 'Open', label: 'For Internships' },
+  { value: '20+', label: 'Technologies Used' },
 ];
 
 function AnimatedSection({ children, delay = 0, className = '' }) {
@@ -41,90 +41,78 @@ export default function About() {
       <div className="container">
         <div className={styles.grid}>
 
-          {/* ---- Left: Avatar + stats ---- */}
-          <AnimatedSection className={styles.avatarCol}>
-            {/* Profile image placeholder (replace src with real photo) */}
-            <div className={styles.avatarWrap}>
-              <div className={styles.avatarRing} />
-              <div className={styles.avatar}>
-                {/* Profile Photo */}
-                <img 
-                  src="/assets/profile.png" 
-                  alt="Sarthak Khalasi" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} 
-                />
-              </div>
-              {/* Decorative floating badge */}
-              <div className={styles.badge}>
-                <span className={styles.badgeDot} />
-                Available for work
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div className={styles.stats}>
-              {stats.map(({ value, label }) => (
-                <div key={label} className={styles.stat}>
-                  <span className={styles.statValue}>{value}</span>
-                  <span className={styles.statLabel}>{label}</span>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-
-          {/* ---- Right: Bio text ---- */}
-          <div className={styles.textCol}>
-            <AnimatedSection delay={0.1}>
+          {/* ---- About Content ---- */}
+          <div className={styles.centeredContent}>
+            <AnimatedSection delay={0.1} className={styles.sectionHeader}>
               <p className="section-label">About Me</p>
               <h2 className="section-title">
                 Building things for the <span className="gradient-text">web</span>
               </h2>
-              <div className="divider" />
+              <div className="divider-center" />
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2}>
-              <p className={styles.bio}>
-                Hey! I'm <strong>Sarthak Khalasi</strong> — a passionate full-stack developer
-                based in India. I love turning complex problems into simple, beautiful, and
-                intuitive digital solutions.
-              </p>
-              <p className={styles.bio}>
-                My journey into tech started with pure curiosity, tinkering with HTML pages
-                and wondering how the internet worked. That curiosity grew into a deep love
-                for software engineering — from crafting pixel-perfect UIs to designing
-                scalable backend architectures.
-              </p>
-              <p className={styles.bio}>
-                When I'm not coding, you'll find me exploring design systems, contributing
-                to open-source, or writing about software on my blog. I'm always excited
-                about projects that{' '}
-                <em className={styles.highlight}>make a real difference</em> in people's lives.
-              </p>
-            </AnimatedSection>
+            <div className={styles.contentRow}>
+              <AnimatedSection delay={0.2} className={styles.bioColumn}>
+                <p className={styles.bio}>
+                  I am a passionate <strong>first-year Computer Science student</strong> who started my journey in web development by learning HTML, CSS, and JavaScript.
+                </p>
+                <p className={styles.bio}>
+                  I have expanded my skills into the <strong>MERN stack</strong>, working with React.js, Node.js, and MongoDB to build modern web applications.
+                </p>
+                <p className={styles.bio}>
+                  I also have a strong foundation in programming languages like <strong>C and C++</strong>, and I continuously practice problem-solving to improve my logic-building skills.
+                </p>
+              </AnimatedSection>
 
-            {/* Info grid */}
-            <AnimatedSection delay={0.3} className={styles.infoGrid}>
-              {[
-                { label: 'Name', value: 'Sarthak Khalasi' },
-                { label: 'Email', value: 'sarthak@example.com' },
-                { label: 'Location', value: 'India' },
-                { label: 'Study', value: 'B.Tech — CS & Engineering' },
-              ].map(({ label, value }) => (
-                <div key={label} className={styles.infoItem}>
-                  <span className={styles.infoLabel}>{label}</span>
-                  <span className={styles.infoValue}>{value}</span>
+              <AnimatedSection delay={0.3} className={styles.detailsColumn}>
+                {/* Info grid */}
+                <div className={styles.infoGrid}>
+                  {[
+                    { label: 'Name', value: 'Sarthak Khalasi' },
+                    { label: 'Location', value: 'Gujarat, India' },
+                    { label: 'Expertise', value: 'MERN Stack, DSA' },
+                    { label: 'Interests', value: 'Data Science' },
+                  ].map(({ label, value }) => (
+                    <div key={label} className={styles.infoItem}>
+                      <span className={styles.infoLabel}>{label}</span>
+                      <span className={styles.infoValue}>{value}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </AnimatedSection>
+            </div>
+
+            {/* Stats Row */}
+            <AnimatedSection delay={0.4}>
+              <div className={styles.summaryStats}>
+                {stats.map(({ value, label }) => (
+                  <div key={label} className={styles.summaryStat}>
+                    <span className={styles.summaryValue}>{value}</span>
+                    <span className={styles.summaryLabel}>{label}</span>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+
+            {/* GitHub Stats — Real-world proof */}
+            <AnimatedSection delay={0.5}>
+              <div className={styles.githubStats}>
+                <p className={styles.statLabel}>GitHub Contributions</p>
+                <img
+                  src="https://ghchart.rshah.org/c8a96e/Sarthak-Khalasi-dev"
+                  alt="Sarthak's GitHub Contributions"
+                  className={styles.githubChart}
+                />
+              </div>
             </AnimatedSection>
 
             {/* Quick links */}
-            <AnimatedSection delay={0.4} className={styles.actions}>
+            <AnimatedSection delay={0.6} className={styles.actions}>
               <a
                 href="/resume.pdf"
-                download
                 className="btn btn-primary"
               >
-                <FiDownload /> Download Resume
+                <FiDownload /> Resume
               </a>
               <div className={styles.socialRow}>
                 {[

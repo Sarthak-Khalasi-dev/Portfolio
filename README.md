@@ -1,6 +1,6 @@
 # Sarthak Khalasi — Portfolio
 
-A stunning, production-ready personal portfolio built with **React 18**, **Framer Motion**, and custom CSS Modules. Replicates the design and interactivity of [ishita-trivedi.vercel.app](https://ishita-trivedi.vercel.app/).
+A stunning, production-ready personal portfolio built with **React 18**, **Framer Motion**, and custom CSS Modules. Replicates the design and interactivity of [sarthakkhalasi.vercel.app](https://sarthakkhalasi.vercel.app/).
 
 ---
 

@@ -112,11 +112,96 @@
 }
 
 /* Content */
-.content {
+.innerContent {
   position: relative;
   z-index: 2;
-  padding-top: 80px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 4rem;
+  padding-top: 100px;
+}
+
+.textContent {
   max-width: 820px;
+}
+
+.imageContent {
+  display: flex;
+  justify-content: center;
+}
+
+/* Avatar Styles (Mirrored from Reference) */
+.avatarWrap {
+  position: relative;
+  width: clamp(280px, 30vw, 380px);
+  aspect-ratio: 1;
+}
+
+.avatarRing {
+  position: absolute;
+  inset: -15px;
+  border: 1px dashed var(--accent-primary);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: spin 30s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 10px; /* Reduced slightly */
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top; /* Shift focus to the top to see hair */
+  border-radius: 50%;
+  filter: grayscale(20%);
+  transition: filter 0.5s ease;
+}
+
+.avatarWrap:hover img {
+  filter: grayscale(0%);
+}
+
+.badge {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  padding: 0.6rem 1.2rem;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  background: #10b981; /* Green dot */
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
 }
 
 /* Greeting */
@@ -165,19 +250,32 @@
   }
 }
 
+.accentBar {
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--accent-primary);
+}
+
 /* Name */
 .name {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 9vw, 7rem);
-  font-weight: 900;
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.03em;
   color: var(--text-primary);
-  margin-bottom: 0.6rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.04em;
 }
 
 .nameAccent {
   color: var(--accent-primary);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-rose));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+  font-weight: 500;
 }
 
 /* Role typewriter */
@@ -217,13 +315,29 @@
   }
 }
 
+.studentLabel {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 500;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
 /* Bio */
 .bio {
   font-size: 1.05rem;
   color: var(--text-secondary);
-  max-width: 580px;
+  max-width: 620px;
   line-height: 1.8;
   margin-bottom: 2.5rem;
+}
+
+.statusLine {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--accent-rose);
+  font-weight: 500;
+  font-style: italic;
 }
 
 /* CTAs */
@@ -248,22 +362,33 @@
 .socialLink {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 50%;
-  color: var(--text-secondary);
-  font-size: 1.1rem;
   text-decoration: none;
   transition: var(--transition-smooth);
 }
 
-.socialLink:hover {
+.socialIconBox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 30px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.socialLabel {
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.socialLink:hover .socialIconBox {
   color: var(--accent-primary);
   border-color: var(--accent-primary);
   background: var(--accent-glow);
   transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(212, 160, 181, 0.2);
 }
 
 /* Scroll indicator */

@@ -23,15 +23,21 @@ const contactInfo = [
     href: 'mailto:sarthakkhalasi1@gmail.com',
   },
   {
-    icon: <FiMapPin />,
-    label: 'Location',
-    value: 'India',
-    href: null,
+    icon: <FiMail />,
+    label: 'LinkedIn',
+    value: 'Sarthak Khalasi',
+    href: 'https://www.linkedin.com/in/sarthak-khalasi-73500439b/',
   },
   {
-    icon: <FiClock />,
-    label: 'Response Time',
-    value: 'Within 24 hours',
+    icon: <FiMail />,
+    label: 'GitHub',
+    value: 'Sarthak-Khalasi-dev',
+    href: 'https://github.com/Sarthak-Khalasi-dev',
+  },
+  {
+    icon: <FiMapPin />,
+    label: 'Location',
+    value: 'Gujarat, India',
     href: null,
   },
 ];

@@ -12,6 +12,8 @@ import styles from '../styles/Navbar.module.css';
 
 const navLinks = [
   { label: 'About', to: 'about' },
+  { label: 'Expertise', to: 'capabilities' },
+  { label: 'Education', to: 'education' },
   { label: 'Skills', to: 'skills' },
   { label: 'Projects', to: 'projects' },
   { label: 'Contact', to: 'contact' },
@@ -37,10 +39,8 @@ export default function Navbar() {
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
-        {/* ---- Logo ---- */}
-        <Link to="hero" smooth duration={600} className={styles.logo}>
-          <span className={styles.logoAccent}>S</span>arthak
-        </Link>
+        {/* ---- Logo Removed ---- */}
+        <div className={styles.logoPlaceholder} />
 
         {/* ---- Desktop links ---- */}
         <ul className={styles.links}>

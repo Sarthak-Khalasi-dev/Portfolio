@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { HiArrowDown } from 'react-icons/hi';
 import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import Magnetic from './Magnetic';
 import styles from '../styles/Hero.module.css';
 
 const roles = ['Full Stack Developer', 'UI/UX Enthusiast', 'Open Source Contributor', 'Problem Solver'];
@@ -74,69 +75,95 @@ export default function Hero() {
       </div>
 
       {/* ---- Content ---- */}
-      <motion.div
-        className={`container ${styles.content}`}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Greeting */}
-        <motion.p variants={itemVariants} className={styles.greeting}>
-          <span className={styles.wave}>👋</span> Hi there, I'm
-        </motion.p>
+      <div className={`container ${styles.innerContent}`}>
+        <motion.div
+          className={styles.textContent}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Greeting */}
+          <motion.p variants={itemVariants} className={styles.greeting}>
+            <span className={styles.accentBar} />
+            Hello, I am
+          </motion.p>
 
-        {/* Name */}
-        <motion.h1 variants={itemVariants} className={styles.name}>
-          Sarthak <span className={styles.nameAccent}>Khalasi</span>
-        </motion.h1>
+          {/* Name */}
+          <motion.h1 variants={itemVariants} className={styles.name}>
+            Sarthak <br />
+            <span className={styles.nameAccent}>Khalasi</span>
+          </motion.h1>
 
-        {/* Animated role */}
-        <motion.div variants={itemVariants} className={styles.roleWrap}>
-          <span className={styles.roleStatic}>I'm a </span>
-          <span className={styles.role}>{displayed}</span>
-          <span className={styles.cursor}>|</span>
+          {/* Animated role */}
+          <motion.div variants={itemVariants} className={styles.roleWrap}>
+            <span className={styles.roleStatic}>I'm a </span>
+            <span className={styles.role}>{displayed}</span>
+            <span className={styles.cursor}>|</span>
+          </motion.div>
+
+          {/* CTAs */}
+          <motion.div variants={itemVariants} className={styles.ctas}>
+            <Magnetic>
+              <Link to="projects" smooth duration={700} offset={-80}>
+                <button className={`btn btn-primary ${styles.btnHero}`}>
+                  View Projects
+                </button>
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <a href="/resume.pdf" target="_blank" rel="noreferrer">
+                <button className={`btn btn-outline ${styles.btnHero}`}>
+                  Resume
+                </button>
+              </a>
+            </Magnetic>
+          </motion.div>
+
+          {/* Social links */}
+          <motion.div variants={itemVariants} className={styles.socials}>
+            {[
+              { icon: <FiGithub />, href: 'https://github.com/Sarthak-Khalasi-dev', label: 'GitHub' },
+              { icon: <FiLinkedin />, href: 'https://www.linkedin.com/in/sarthak-khalasi-73500439b/', label: 'LinkedIn' },
+            ].map(({ icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                className={styles.socialLink}
+              >
+                <div className={styles.socialIconBox}>
+                  {icon}
+                  <span className={styles.socialLabel}>{label}</span>
+                </div>
+              </a>
+            ))}
+          </motion.div>
         </motion.div>
 
-        {/* Short bio */}
-        <motion.p variants={itemVariants} className={styles.bio}>
-          I craft elegant digital experiences — from pixel-perfect interfaces to
-          robust backend systems. Passionate about clean code and meaningful products.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div variants={itemVariants} className={styles.ctas}>
-          <Link to="projects" smooth duration={700} offset={-80}>
-            <button className={`btn btn-primary ${styles.btnHero}`}>
-              View My Work
-            </button>
-          </Link>
-          <Link to="contact" smooth duration={700} offset={-80}>
-            <button className={`btn btn-outline ${styles.btnHero}`}>
-              Get In Touch
-            </button>
-          </Link>
+        {/* Hero Image */}
+        <motion.div 
+          className={styles.imageContent}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <div className={styles.avatarWrap}>
+            <div className={styles.avatarRing} />
+            <div className={styles.avatar}>
+              <img 
+                src="/assets/profile.png" 
+                alt="Sarthak Khalasi" 
+              />
+            </div>
+            <div className={styles.badge}>
+              <span className={styles.badgeDot} />
+              Open to Work
+            </div>
+          </div>
         </motion.div>
-
-        {/* Social links */}
-        <motion.div variants={itemVariants} className={styles.socials}>
-          {[
-            { icon: <FiGithub />, href: 'https://github.com/Sarthak-Khalasi-dev', label: 'GitHub' },
-            { icon: <FiLinkedin />, href: 'https://www.linkedin.com/in/sarthak-khalasi-73500439b/', label: 'LinkedIn' },
-            { icon: <FiTwitter />, href: 'https://x.com/sarthak_2655', label: 'Twitter' },
-          ].map(({ icon, href, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={label}
-              className={styles.socialLink}
-            >
-              {icon}
-            </a>
-          ))}
-        </motion.div>
-      </motion.div>
+      </div>
 
       {/* ---- Scroll indicator ---- */}
       <motion.div

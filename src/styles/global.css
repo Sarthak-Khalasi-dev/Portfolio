@@ -1,13 +1,14 @@
 /* =========================================
-   GLOBAL STYLES — Ishita Trivedi Portfolio
+   GLOBAL STYLES — Sarthak Khalasi Portfolio
    ========================================= */
 
 :root {
   /* Color Palette — transparent sections so 3D canvas shows through fully */
   --bg-primary: transparent;
   --bg-secondary: transparent;
-  --bg-card: rgba(12, 12, 18, 0.78);
-  --bg-glass: rgba(255, 255, 255, 0.04);
+  --bg-card: rgba(12, 12, 18, 0.45);
+  --bg-glass: rgba(255, 255, 255, 0.03);
+  --glass-blur: blur(12px);
 
   --accent-primary: #c8a96e;
   /* warm gold */
@@ -21,8 +22,8 @@
   --text-secondary: #9d9891;
   --text-muted: #5a5750;
 
-  --border-subtle: rgba(200, 169, 110, 0.12);
-  --border-hover: rgba(200, 169, 110, 0.35);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(200, 169, 110, 0.4);
 
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
@@ -115,11 +116,12 @@ body {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.05;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
 }
 
 .gradient-text {
@@ -127,6 +129,8 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-style: italic; /* Luxury serif flair */
+  font-weight: 500;
 }
 
 /* ---- Buttons ---- */
@@ -173,11 +177,47 @@ body {
 }
 
 /* ---- Divider ---- */
-.divider {
-  width: 3rem;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent-primary), transparent);
+.divider, .divider-center {
+  width: 60px;
+  height: 4px;
+  background: var(--accent-primary);
+  border-radius: 2px;
   margin: 1.5rem 0;
+}
+
+.divider-center {
+  margin: 1.5rem auto;
+}
+
+/* ---- Atmospheric Glows ---- */
+.glow-aura {
+  position: fixed;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.15;
+  animation: drift 20s infinite alternate ease-in-out;
+}
+
+.glow-1 {
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, var(--accent-primary), transparent 70%);
+}
+
+.glow-2 {
+  bottom: -10%;
+  right: -10%;
+  background: radial-gradient(circle, var(--accent-rose), transparent 70%);
+  animation-delay: -5s;
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(5%, 5%) scale(1.1); }
 }
 
 /* Noise texture overlay removed — was covering the 3D canvas at z-index:9999 */

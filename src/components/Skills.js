@@ -22,53 +22,36 @@ const skillCategories = [
     category: 'Frontend',
     color: '#61dafb',
     skills: [
-      { name: 'React', icon: <SiReact />, color: '#61dafb', level: 90 },
-      { name: 'JavaScript', icon: <SiJavascript />, color: '#f7df1e', level: 92 },
-      { name: 'Tailwind', icon: <SiTailwindcss />, color: '#06b6d4', level: 88 },
-      { name: 'HTML/CSS', icon: <SiHtml5 />, color: '#e34f26', level: 95 },
+      { name: 'React', icon: <SiReact />, color: '#61dafb' },
+      { name: 'JavaScript', icon: <SiJavascript />, color: '#f7df1e' },
+      { name: 'Next.js', icon: <FiCode />, color: '#ffffff' },
+      { name: 'Tailwind', icon: <SiTailwindcss />, color: '#06b6d4' },
+      { name: 'HTML/CSS', icon: <SiHtml5 />, color: '#e34f26' },
     ],
   },
   {
     category: 'Backend',
     color: '#68d391',
     skills: [
-      { name: 'Node.js', icon: <SiNodedotjs />, color: '#68a063', level: 84 },
+      { name: 'Node.js', icon: <SiNodedotjs />, color: '#68a063' },
     ],
   },
   {
     category: 'Databases',
     color: '#f6ad55',
     skills: [
-      { name: 'MongoDB', icon: <SiMongodb />, color: '#47a248', level: 80 },
+      { name: 'MongoDB', icon: <SiMongodb />, color: '#47a248' },
     ],
   },
   {
     category: 'Tools & DevOps',
     color: '#b794f4',
     skills: [
-      { name: 'Git', icon: <SiGit />, color: '#f05032', level: 88 },
-      { name: 'Figma', icon: <SiFigma />, color: '#f24e1e', level: 75 },
-      { name: 'GitHub', icon: <SiGithub />, color: '#ffffff', level: 90 },
+      { name: 'Git', icon: <SiGit />, color: '#f05032' },
+      { name: 'GitHub', icon: <SiGithub />, color: '#ffffff' },
     ],
   },
 ];
-
-/* Animates a progress bar fill */
-function ProgressBar({ level, color }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-40px' });
-  return (
-    <div className={styles.barTrack} ref={ref}>
-      <motion.div
-        className={styles.barFill}
-        style={{ background: `linear-gradient(90deg, ${color}80, ${color})` }}
-        initial={{ width: 0 }}
-        animate={isInView ? { width: `${level}%` } : {}}
-        transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.8, 0.25, 1] }}
-      />
-    </div>
-  );
-}
 
 /* Animated card entry */
 const cardVariants = {
@@ -95,24 +78,20 @@ function CategoryBlock({ category, color, skills, index }) {
         <h3 className={styles.catTitle}>
           <span className={styles.catDot} /> {category}
         </h3>
-        <div className={styles.skillList}>
+        <div className={styles.skillGrid}>
           {skills.map((skill, i) => (
             <motion.div
               key={skill.name}
-              className={styles.skillItem}
+              className={styles.skillBox}
               custom={i}
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
             >
-              <div className={styles.skillTop}>
-                <span className={styles.skillIcon} style={{ color: skill.color }}>
-                  {skill.icon}
-                </span>
-                <span className={styles.skillName}>{skill.name}</span>
-                <span className={styles.skillLevel}>{skill.level}%</span>
+              <div className={styles.skillIcon} style={{ color: skill.color }}>
+                {skill.icon}
               </div>
-              <ProgressBar level={skill.level} color={skill.color} />
+              <span className={styles.skillName}>{skill.name}</span>
             </motion.div>
           ))}
         </div>
@@ -135,12 +114,12 @@ export default function Skills() {
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65 }}
         >
-          <p className="section-label"><FiCode /> Tech Stack</p>
+          <p className="section-label">Expertise</p>
           <h2 className="section-title">
-            Tools I <span className="gradient-text">Work With</span>
+            My <span className="gradient-text">Tech Stack</span>
           </h2>
           <p className={styles.subtitle}>
-            A selection of technologies I've worked with professionally and in personal projects.
+            A curated selection of technologies and tools I use to bring digital ideas to life.
           </p>
         </motion.div>
 
