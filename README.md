@@ -99,4 +99,4 @@ The app will open at **http://localhost:3000**
 
 ---
 
-*Built with ♥ — React 18 + Framer Motion + CSS Modules*
+

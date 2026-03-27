@@ -39,8 +39,9 @@ export default function Navbar() {
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
-        {/* ---- Logo Removed ---- */}
-        <div className={styles.logoPlaceholder} />
+        <Link to="hero" smooth duration={600} offset={-80} className={styles.logo}>
+          <img src="/assets/logo.png" alt="Sarthak Khalasi Logo" className={styles.logoImg} />
+        </Link>
 
         {/* ---- Desktop links ---- */}
         <ul className={styles.links}>
@@ -61,7 +62,7 @@ export default function Navbar() {
           ))}
           <li>
             <a
-              href="/resume.pdf"
+              href="https://drive.google.com/file/d/1glv38S0foYU_XBmK3HJfzhjobf2NOxEz/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
               className={`btn btn-outline ${styles.resumeBtn}`}
@@ -100,7 +101,7 @@ export default function Navbar() {
           ))}
           <li>
             <a
-              href="/resume.pdf"
+              href="https://drive.google.com/file/d/1glv38S0foYU_XBmK3HJfzhjobf2NOxEz/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
               className={`btn btn-outline ${styles.mobileResumeBtn}`}

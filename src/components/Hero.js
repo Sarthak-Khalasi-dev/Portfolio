@@ -15,6 +15,7 @@ import { HiArrowDown } from 'react-icons/hi';
 import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
 import Magnetic from './Magnetic';
 import styles from '../styles/Hero.module.css';
+import gsap from 'gsap';
 
 const roles = ['Full Stack Developer', 'UI/UX Enthusiast', 'Open Source Contributor', 'Problem Solver'];
 
@@ -61,6 +62,15 @@ export default function Hero() {
     }
     return () => clearTimeout(timer);
   }, [charIndex, typing, roleIndex]);
+
+  /* GSAP Entrance Animation */
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.5 } });
+    tl.fromTo(`.${styles.name}`, { x: -100, opacity: 0 }, { x: 0, opacity: 1, delay: 0.5 })
+      .fromTo(`.${styles.nameAccent}`, { y: 50, opacity: 0 }, { y: 0, opacity: 1 }, '-=1.2')
+      .fromTo(`.${styles.greeting}`, { opacity: 0, y: 20 }, { opacity: 1, y: 0 }, '-=1')
+      .fromTo(`.${styles.ctas}`, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, ease: 'back.out(1.7)' }, '-=1');
+  }, []);
 
   return (
     <div className={styles.hero}>
@@ -111,7 +121,7 @@ export default function Hero() {
               </Link>
             </Magnetic>
             <Magnetic>
-              <a href="/resume.pdf" target="_blank" rel="noreferrer">
+              <a href="https://drive.google.com/file/d/1glv38S0foYU_XBmK3HJfzhjobf2NOxEz/view?usp=sharing" target="_blank" rel="noreferrer">
                 <button className={`btn btn-outline ${styles.btnHero}`}>
                   Resume
                 </button>

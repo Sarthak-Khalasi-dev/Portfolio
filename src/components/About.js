@@ -109,8 +109,10 @@ export default function About() {
             {/* Quick links */}
             <AnimatedSection delay={0.6} className={styles.actions}>
               <a
-                href="/resume.pdf"
+                href="https://drive.google.com/file/d/1glv38S0foYU_XBmK3HJfzhjobf2NOxEz/view?usp=sharing"
                 className="btn btn-primary"
+                target="_blank"
+                rel="noreferrer"
               >
                 <FiDownload /> Resume
               </a>

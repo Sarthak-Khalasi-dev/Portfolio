@@ -20,9 +20,57 @@ import ScrollProgress from './components/ScrollProgress';
 import PreLoader from './components/PreLoader';
 import AIAssistant from './components/AIAssistant';
 import { AnimatePresence } from 'framer-motion';
+import Lenis from 'lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [loading, setLoading] = React.useState(true);
+
+  /* Initialize Lenis for smooth scrolling */
+  React.useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    /* GSAP Section Reveals */
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => {
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+            end: 'top 50%',
+            scrub: false,
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    });
+
+    return () => {
+      lenis.destroy();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
 
   return (
     <BrowserRouter>

@@ -42,6 +42,17 @@
   color: var(--accent-primary);
 }
 
+.logoImg {
+  height: 48px; /* Standard logo size */
+  width: auto;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.logo:hover .logoImg {
+  transform: scale(1.08) rotate(-2deg);
+}
+
 /* Desktop links */
 .links {
   display: flex;

@@ -55,7 +55,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Required for Lenis */
   font-size: 16px;
 }
 
