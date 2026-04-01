@@ -1,6 +1,6 @@
 # Sarthak Khalasi — Portfolio
 
-A stunning, production-ready personal portfolio built with **React 18**, **Framer Motion**, and custom CSS Modules. Replicates the design and interactivity of [sarthakkhalasi](https://sarthak-portfolio01.netlify.app/).
+A stunning, production-ready personal portfolio built with **React 18**, **Vite**, **Framer Motion**, **Three.js**, and **GSAP**. This project features a high-performance, modern tech stack for a premium user experience.
 
 ---
 
@@ -8,17 +8,36 @@ A stunning, production-ready personal portfolio built with **React 18**, **Frame
 
 | Feature | Details |
 |---------|---------|
-| 🎨 **Design** | Dark theme with warm gold accents and soft rose highlights |
+| 🎨 **Design** | Dark theme with glassmorphism, glowing auras, and modern accents |
+| 🌐 **3D Visuals** | Global 3D background powered by **Three.js** and **React Three Fiber** |
 | 🔠 **Typography** | Playfair Display + DM Sans + JetBrains Mono |
-| 🎬 **Animations** | Scroll-triggered entry animations via Framer Motion |
-| ✍️ **Typewriter** | Animated role cycling in the Hero section |
-| 📱 **Responsive** | Mobile, tablet, and desktop breakpoints |
-| 🍔 **Mobile Menu** | Animated hamburger overlay navigation |
-| 📊 **Skills** | Categorized tech stack with animated progress bars |
-| 🃏 **Projects** | Filterable cards with hover overlays & links |
-| 📬 **Contact** | Validated form with loading and success states |
-| 🔗 **Smooth Scroll** | `react-scroll` for section navigation |
-| 🌫️ **Backdrop FX** | Noise texture, grid patterns, glow blobs |
+| 🎬 **Animations** | Scroll-triggered reveals via **GSAP** and micro-interactions with **Framer Motion** |
+| 📜 **Smooth Scroll** | Inertial scrolling implemented with **Lenis** |
+| 🖱️ **Custom Cursor** | Dynamic interactive cursor that reacts to hover states |
+| 🤖 **AI Assistant** | Integrated AI Assistant component for interactive user engagement |
+| 📱 **Responsive** | Fully optimized for mobile, tablet, and desktop |
+
+---
+
+## 🚀 Getting Started
+
+This project is built with **Vite** for ultra-fast development.
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Start the dev server
+npm run dev
+
+# 3. Build for production
+npm run build
+
+# 4. Preview production build
+npm run preview
+```
+
+The app will open at **http://localhost:3000** (or the port specified by Vite).
 
 ---
 
@@ -26,43 +45,21 @@ A stunning, production-ready personal portfolio built with **React 18**, **Frame
 
 ```
 src/
-├── App.js                   # Root component
-├── index.js                 # Entry point
+├── main.jsx                 # Entry point (Vite)
+├── App.jsx                  # Root component
 ├── components/
-│   ├── Navbar.js            # Responsive navigation
-│   ├── Hero.js              # Full-viewport landing
-│   ├── About.js             # Bio + stats + info
-│   ├── Skills.js            # Tech stack grid + bars
-│   ├── Projects.js          # Filterable project cards
-│   ├── Contact.js           # Contact form + info
-│   └── Footer.js            # Footer with links
+│   ├── Navbar.jsx           # Responsive navigation
+│   ├── Hero.jsx             # Full-viewport landing with 3D elements
+│   ├── About.jsx            # Bio + stats + info
+│   ├── Skills.jsx           # Tech stack grid
+│   ├── Projects.jsx         # Modern project cards
+│   ├── Contact.jsx          # Contact form
+│   ├── ThreeBackground.jsx  # Three.js canvas & scenes
+│   └── ...                  # Other interactive components
 └── styles/
-    ├── global.css           # CSS variables, reset, utilities
-    ├── Navbar.module.css
-    ├── Hero.module.css
-    ├── About.module.css
-    ├── Skills.module.css
-    ├── Projects.module.css
-    ├── Contact.module.css
-    └── Footer.module.css
+    ├── global.css           # Design tokens, reset, utilities
+    └── *.module.css         # Component-scoped styling
 ```
-
----
-
-## 🚀 Getting Started
-
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Start the dev server
-npm start
-
-# 3. Build for production
-npm run build
-```
-
-The app will open at **http://localhost:3000**
 
 ---
 
@@ -70,33 +67,37 @@ The app will open at **http://localhost:3000**
 
 | Package | Purpose |
 |---------|---------|
-| `react` `react-dom` | Core React |
-| `react-router-dom` | Client-side routing |
-| `framer-motion` | Animations & transitions |
-| `react-scroll` | Smooth section scrolling |
-| `react-icons` | Icon library (Si, Fi sets) |
+| `vite` | Next-generation frontend tooling |
+| `react` `react-dom` | Core UI library |
+| `@react-three/fiber` | Three.js renderer for React |
+| `gsap` | High-performance scroll & timeline animations |
+| `framer-motion` | Smooth UI transitions & gestures |
+| `lenis` | Modern smooth scrolling engine |
+| `react-icons` | Premium icon sets (Fi, Si) |
 
 ---
 
-## 🎨 Customisation
+## 🎨 Customization
 
 1. **Colors** — Edit CSS variables in `src/styles/global.css`
-2. **Content** — Update project data in `Projects.js`, skills in `Skills.js`
-3. **Profile photo** — Replace the SVG placeholder in `About.js` with an `<img>` tag
-4. **Contact** — Integrate [EmailJS](https://emailjs.com) in `Contact.js` for real email sending
-5. **Resume** — Add your PDF as `public/resume.pdf`
+2. **3D Scenes** — Modify `ThreeBackground.jsx` to change the background visuals
+3. **Content** — Update data in respective components (e.g., `Projects.jsx`, `Skills.jsx`)
+4. **GSAP Config** — Adjust scroll triggers in `App.jsx`
 
 ---
 
-## 📸 Sections
+## 📸 Core Sections
 
-1. **Hero** — Animated name, typewriter role, CTA buttons, social links
-2. **About** — Profile avatar, bio, stats, info grid, download resume
-3. **Skills** — Four category blocks with animated progress bars
-4. **Projects** — Six projects with filter tabs, hover overlays, live/GitHub links
-5. **Contact** — Contact form with validation + info cards
-6. **Footer** — Quick nav, social icons, copyright
+1. **Hero** — 3D-enhanced landing with dynamic role cycling
+2. **About** — Professional bio with integrated stats
+3. **Capabilities** — Detailed breakdown of core services/expertise
+4. **Education & Experience** — High-end timeline for professional history
+5. **Skills** — Interactive grid of technologies
+6. **Projects** — Featured work with immersive hover effects
+7. **Contact** — Premium form with integrated social links
+8. **AI Assistant** — Interactive layer for personalized engagement
 
 ---
 
-
+## 📄 License
+This project is for personal use as a portfolio template.
