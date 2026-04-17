@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 64px;
 }
 
 /* Logo */
@@ -45,6 +45,8 @@
 .logoImg {
   height: 48px; /* Standard logo size */
   width: auto;
+  max-width: 60vw; /* Prevent pushing hamburger menu off-screen */
+  object-fit: contain;
   display: block;
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -57,14 +59,14 @@
 .links {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 1.4rem;
   list-style: none;
 }
 
 .link {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-secondary);
   text-decoration: none;
@@ -72,6 +74,7 @@
   position: relative;
   padding-bottom: 4px;
   transition: color var(--transition-fast);
+  white-space: nowrap;
 }
 .link::after {
   content: '';
@@ -93,8 +96,8 @@
 }
 
 .resumeBtn {
-  padding: 0.5rem 1.25rem;
-  font-size: 0.78rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.7rem;
 }
 
 /* Hamburger (mobile) */

@@ -1,142 +1,242 @@
-/* Header */
+.skills {
+  padding: 100px 0;
+  position: relative;
+  background: var(--bg-primary); 
+}
+
 .header {
   text-align: center;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
 
-.subtitle {
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.grid {
+.dashboardGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
-  align-items: stretch;
+  grid-template-columns: 1fr;
+  gap: 3rem;
 }
 
-/* Category block */
-.categoryBlock {
-  position: relative;
-  height: 100%;
-  background: rgba(15, 15, 20, 0.4);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+@media (min-width: 1024px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.detailsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.activeCard {
+  background: linear-gradient(145deg, rgba(20, 20, 25, 0.4), rgba(10, 10, 15, 0.6));
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  padding: 1.5rem 1.75rem;
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.iconBox {
+  width: 70px;
+  height: 70px;
+  border-radius: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  background: var(--skill-color);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.titleArea h3 {
+  font-size: 1.8rem;
+  margin: 0 0 0.4rem 0;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.titleArea span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  font-family: var(--font-mono);
+}
+
+.proficiencyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.proficiencyHeader span:first-child {
+  color: var(--text-primary);
+}
+
+.proficiencyHeader span:last-child {
+  font-weight: 700;
+}
+
+.barBg {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
   overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 6px;
+}
+
+.categoryStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.statBox {
+  background: rgba(20, 20, 25, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
 }
 
-.categoryBlock::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, var(--cat-color) 0%, transparent 60%);
-  opacity: 0.03;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-}
-
-.categoryBlock:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-10px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
-}
-
-.categoryBlock:hover::before {
-  opacity: 0.08;
-}
-
-.catTitle {
+.statHeader {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
+}
+
+.statCount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.diagramPanel {
+  position: relative;
+  height: 450px;
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
 }
 
-.catDot {
-  width: 8px;
-  height: 2px;
-  background: var(--cat-color);
-  box-shadow: 0 0 10px var(--cat-color);
-  border-radius: 4px;
+@media (max-width: 1024px) {
+  .diagramPanel {
+    margin-top: 2rem;
+    height: 380px;
+  }
 }
 
-/* Skill items */
-.skillGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
+.svgLines {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.skillBox {
+.centerNode {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-bottom: -10px;
+  border-radius: 1.5rem;
   display: flex;
-  flex-direction: row; /* Horizontal for cleaner look */
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.8rem 1rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(20, 20, 25, 0.9), rgba(10, 10, 15, 1));
+  border: 1px solid var(--skill-color);
+  color: var(--skill-color);
+  z-index: 10;
+  box-shadow: 0 0 25px rgba(200, 169, 110, 0.15), inset 0 0 15px rgba(200, 169, 110, 0.05);
+  backdrop-filter: blur(12px);
+  transition: all 0.4s ease;
 }
 
-.skillBox:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: var(--cat-color);
-  transform: translateX(5px);
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+.centerNode svg {
+  font-size: 2.2rem;
+  margin-bottom: 0.3rem;
 }
 
-.skillIcon {
-  font-size: 1.5rem;
+.centerNode span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+.orbitNode {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 1rem;
+  background: rgba(15, 15, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--node-color);
+  font-size: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.8;
+  z-index: 5;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
   transition: all 0.3s ease;
 }
 
-.skillBox:hover .skillIcon {
-  opacity: 1;
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 8px var(--cat-color));
+.orbitActive {
+  background: linear-gradient(145deg, rgba(20, 20, 25, 0.9), rgba(10, 10, 15, 1));
+  border-color: var(--node-color);
+  box-shadow: 0 0 15px var(--node-color), inset 0 0 10px rgba(255, 255, 255, 0.1);
+  z-index: 6;
 }
 
-.skillName {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+.orbitNode:hover {
+  filter: brightness(1.2);
+}
+
+.orbitTooltip {
+  position: absolute;
+  bottom: -30px;
+  background: #111;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
   white-space: nowrap;
-}
-
-.skillBox:hover .skillName {
-  color: var(--text-primary);
-}
-
-
-/* ---- Responsive ---- */
-@media (max-width: 860px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+  font-weight: 600;
+  font-family: var(--font-mono);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }

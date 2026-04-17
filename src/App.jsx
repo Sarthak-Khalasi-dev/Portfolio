@@ -19,6 +19,10 @@ import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import PreLoader from './components/PreLoader';
 import AIAssistant from './components/AIAssistant';
+import Achievements from './components/Achievements';
+import Hackathons from './components/Hackathons';
+import Certificates from './components/Certificates';
+import ResumeModal from './components/ResumeModal';
 import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 import gsap from 'gsap';
@@ -74,7 +78,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App" style={{ position: 'relative' }}>
+      <div className="App" style={{ position: 'relative', overflowX: 'hidden', width: '100%' }}>
         <AnimatePresence mode="wait">
           {loading && <PreLoader onComplete={() => setLoading(false)} />}
         </AnimatePresence>
@@ -106,8 +110,13 @@ function App() {
           <section id="education"><Education /></section>
           <section id="skills"><Skills /></section>
           <section id="projects"><Projects /></section>
+          <section id="hackathons"><Hackathons /></section>
+          <section id="achievements"><Achievements /></section>
+          <section id="certificates"><Certificates /></section>
           <section id="contact"><Contact /></section>
         </main>
+
+        <ResumeModal />
 
         <AIAssistant />
 

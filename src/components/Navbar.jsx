@@ -12,10 +12,11 @@ import styles from '../styles/Navbar.module.css';
 
 const navLinks = [
   { label: 'About', to: 'about' },
-  { label: 'Expertise', to: 'capabilities' },
   { label: 'Education', to: 'education' },
   { label: 'Skills', to: 'skills' },
   { label: 'Projects', to: 'projects' },
+  { label: 'Certifications', to: 'certificates' },
+  { label: 'Hackathons', to: 'hackathons' },
   { label: 'Contact', to: 'contact' },
 ];
 
@@ -40,7 +41,7 @@ export default function Navbar() {
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
         <Link to="hero" smooth duration={600} offset={-80} className={styles.logo}>
-          <img src="/assets/logo.png" alt="Sarthak Khalasi Logo" className={styles.logoImg} />
+          <img src="https://res.cloudinary.com/dsrczav6p/image/upload/q_auto/f_auto/v1776427702/s_logo_ppghaa.png" alt="Sarthak Khalasi Logo" className={styles.logoImg} />
         </Link>
 
         {/* ---- Desktop links ---- */}
@@ -60,16 +61,6 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-          <li>
-            <a
-              href="https://drive.google.com/file/d/1glv38S0foYU_XBmK3HJfzhjobf2NOxEz/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-              className={`btn btn-outline ${styles.resumeBtn}`}
-            >
-              Resume
-            </a>
-          </li>
         </ul>
 
         {/* ---- Mobile hamburger ---- */}
@@ -99,17 +90,6 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-          <li>
-            <a
-              href="https://drive.google.com/file/d/1glv38S0foYU_XBmK3HJfzhjobf2NOxEz/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-              className={`btn btn-outline ${styles.mobileResumeBtn}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              Resume
-            </a>
-          </li>
         </ul>
       </div>
     </nav>

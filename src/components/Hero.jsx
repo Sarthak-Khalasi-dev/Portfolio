@@ -12,7 +12,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { HiArrowDown } from 'react-icons/hi';
-import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+
 import Magnetic from './Magnetic';
 import styles from '../styles/Hero.module.css';
 import gsap from 'gsap';
@@ -112,7 +112,7 @@ export default function Hero() {
           </motion.div>
 
           {/* CTAs */}
-          <motion.div variants={itemVariants} className={styles.ctas}>
+          <motion.div variants={itemVariants} className={styles.ctas} style={{ marginTop: '2rem' }}>
             <Magnetic>
               <Link to="projects" smooth duration={700} offset={-80}>
                 <button className={`btn btn-primary ${styles.btnHero}`}>
@@ -121,35 +121,16 @@ export default function Hero() {
               </Link>
             </Magnetic>
             <Magnetic>
-              <a href="https://drive.google.com/file/d/1glv38S0foYU_XBmK3HJfzhjobf2NOxEz/view?usp=sharing" target="_blank" rel="noreferrer">
-                <button className={`btn btn-outline ${styles.btnHero}`}>
-                  Resume
-                </button>
-              </a>
+              <button 
+                className={`btn btn-outline ${styles.btnHero} ${styles.btnHeroResume}`}
+                onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('open-resume-modal')); }}
+              >
+                Resume
+              </button>
             </Magnetic>
           </motion.div>
 
-          {/* Social links */}
-          <motion.div variants={itemVariants} className={styles.socials}>
-            {[
-              { icon: <FiGithub />, href: 'https://github.com/Sarthak-Khalasi-dev', label: 'GitHub' },
-              { icon: <FiLinkedin />, href: 'https://www.linkedin.com/in/sarthak-khalasi-73500439b/', label: 'LinkedIn' },
-            ].map(({ icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={label}
-                className={styles.socialLink}
-              >
-                <div className={styles.socialIconBox}>
-                  {icon}
-                  <span className={styles.socialLabel}>{label}</span>
-                </div>
-              </a>
-            ))}
-          </motion.div>
+
         </motion.div>
 
         {/* Hero Image */}

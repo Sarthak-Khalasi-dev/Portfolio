@@ -5,20 +5,21 @@ import { scroller } from 'react-scroll';
 import styles from '../styles/AIAssistant.module.css';
 
 const KNOWLEDGE_BASE = {
-  about: "I am Sarthak Khalasi, a first-year Computer Engineering student at Swaminarayan University. I'm a specialized MERN stack developer with a strong foundation in C/C++ and a passion for building premium web experiences.",
-  skills: "My technical arsenal includes React, Node.js, Next.js, and Express on the backend. I use MongoDB for databases and am proficient in C and C++ for logic building. I also have an eye for UI/UX using Tailwind CSS and Framer Motion.",
-  projects: "I've built several high-impact projects: \n1. **Meal Explorer** (API Integration) - A dynamic recipe discovery app.\n2. **Tissot Clone** - A luxury brand frontend clone.\n3. **Stripe Clone** - Pixel-perfect corporate UI recreation.\n4. **HubSpot Academy** - Educational portal frontend.",
-  contact: "You can reach me via email at sarthakkhalasi1@gmail.com. I'm also active on LinkedIn and GitHub — you can find the links in the contact section at the bottom!",
-  education: "I'm currently pursuing my B.Tech in Computer Engineering (2025-2029). I completed my Higher Secondary at Lancer Army school.",
-  status: "I am currently open for internships and collaborative opportunities where I can apply my MERN stack skills and learn more about industry-grade software engineering."
+  about: "I am Sarthak Khalasi, a specialized MERN stack developer with a strong foundation in C/C++ and a passion for building premium, responsive web experiences. You can find me working on full-stack projects or building flawless frontend clones.",
+  skills: "My technical arsenal is heavily focused on the modern web: React, Node.js, Express, and MongoDB. I focus purely on clean logic, and I have a sharp eye for UI/UX using Tailwind CSS and Framer Motion for animations.",
+  projects: "I specialize in building high-fidelity clones and interactive apps! Key projects include: \n1. **Netflix Clone** (Full-featured UI)\n2. **Nike Clone** (Premium visual layout)\n3. **Tissot Clone** (Luxury responsive design)\n4. **Stripe Clone** (Corporate UI)\n5. **Meal Explorer** (Dynamic API App)",
+  achievements: "I've recently participated in the **OdooXIndus Hackathon** where we built a comprehensive Restaurant POS system. I hold certifications in **Prompt Engineering** and **Web Development** from Sololearn, and successfully qualified for Hack Energy 2.0!",
+  contact: "You can reach me via email at sarthakkhalasi1@gmail.com. I'm also active on LinkedIn, Twitter, LeetCode, and GitHub — you can find all my direct links in the contact footer!",
+  education: "I'm currently pursuing Computer Engineering and constantly elevating my technical skills through practical, hands-on development.",
+  status: "I am actively open for collaborations, freelance work, and opportunities to apply my MERN stack skills and deliver industry-grade software solutions."
 };
 
 const SUGGESTIONS = [
-  "Tell me about Sarthak",
-  "Show your projects",
-  "What are your skills?",
+  "What are your main skills?",
+  "Show me your best projects",
+  "Any hackathons or certs?",
   "How can I contact you?",
-  "Tell me about your education"
+  "What is your current status?"
 ];
 
 export default function AIAssistant() {
@@ -50,21 +51,25 @@ export default function AIAssistant() {
       let action = null;
 
       const lowerText = userText.toLowerCase();
-      if (lowerText.includes('sarthak') || lowerText.includes('who are you')) response = KNOWLEDGE_BASE.about;
-      if (lowerText.includes('skill')) response = KNOWLEDGE_BASE.skills;
-      if (lowerText.includes('project') || lowerText.includes('work')) {
+      if (lowerText.includes('sarthak') || lowerText.includes('who are you') || lowerText.includes('about')) response = KNOWLEDGE_BASE.about;
+      if (lowerText.includes('skill') || lowerText.includes('tech') || lowerText.includes('stack')) response = KNOWLEDGE_BASE.skills;
+      if (lowerText.includes('project') || lowerText.includes('work') || lowerText.includes('built')) {
         response = KNOWLEDGE_BASE.projects;
         action = 'projects';
       }
-      if (lowerText.includes('contact') || lowerText.includes('hire') || lowerText.includes('reach')) {
+      if (lowerText.includes('contact') || lowerText.includes('hire') || lowerText.includes('reach') || lowerText.includes('email')) {
         response = KNOWLEDGE_BASE.contact;
         action = 'contact';
       }
       if (lowerText.includes('education') || lowerText.includes('college') || lowerText.includes('school')) {
         response = KNOWLEDGE_BASE.education;
-        action = 'education';
+        action = 'about';
       }
-      if (lowerText.includes('internship') || lowerText.includes('job')) response = KNOWLEDGE_BASE.status;
+      if (lowerText.includes('hackathon') || lowerText.includes('certif') || lowerText.includes('achiev')) {
+         response = KNOWLEDGE_BASE.achievements;
+         action = 'hackathons';
+      }
+      if (lowerText.includes('internship') || lowerText.includes('job') || lowerText.includes('status')) response = KNOWLEDGE_BASE.status;
 
       setMessages(prev => [...prev, { type: 'ai', text: response }]);
       setIsTyping(false);

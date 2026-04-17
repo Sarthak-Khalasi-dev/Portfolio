@@ -55,30 +55,64 @@
 }
 
 .githubStats {
-  margin-top: 5rem;
+  margin-top: 8rem;
   text-align: center;
+  padding-bottom: 2rem;
 }
 
-.ghTitle {
-  font-size: 1.8rem;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
+.ghWrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem 0 2rem 0;
 }
 
 .ghPlaceholder {
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
+  padding: 2.5rem;
+  background: linear-gradient(145deg, rgba(20, 20, 25, 0.6), rgba(12, 12, 18, 0.7));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 169, 110, 0.15); /* subtle gold border */
+  border-radius: 1.5rem; /* rounded-2xl */
+  display: inline-flex;
   justify-content: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  min-width: 800px; /* forces horizontal scrolling on small screens */
+  margin: 0 auto;
+}
+
+.ghPlaceholder:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 25px rgba(200, 169, 110, 0.08);
+  border-color: rgba(200, 169, 110, 0.35);
 }
 
 .ghChart {
+  width: 100%;
   max-width: 100%;
-  filter: invert(1) hue-rotate(180deg);
-  opacity: 0.8;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+  filter: drop-shadow(0 0 8px rgba(200, 169, 110, 0.15));
+}
+
+.ghPlaceholder:hover .ghChart {
+  opacity: 1;
+  filter: drop-shadow(0 0 12px rgba(200, 169, 110, 0.3));
+}
+
+/* Custom Scrollbar */
+.ghWrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.ghWrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+}
+.ghWrapper::-webkit-scrollbar-thumb {
+  background: rgba(200, 169, 110, 0.2);
+  border-radius: 4px;
+}
+.ghWrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 169, 110, 0.5);
 }
 
 @media (max-width: 600px) {

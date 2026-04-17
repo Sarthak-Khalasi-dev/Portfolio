@@ -59,17 +59,27 @@ export default function Achievements() {
           ))}
         </div>
 
-        {/* GitHub Stats Placeholder */}
-        <div className={styles.githubStats}>
-           <h3 className={styles.ghTitle}>GitHub Contributions</h3>
-           <div className={styles.ghPlaceholder}>
-              <img 
-                 src="https://ghchart.rshah.org/Sarthak-Khalasi-dev" 
-                 alt="Sarthak's GitHub Contributions" 
-                 className={styles.ghChart}
-              />
+        {/* GitHub Graph — Bottom Area */}
+        <motion.div 
+           className={styles.githubStats}
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true, margin: '-50px' }}
+           transition={{ duration: 0.6 }}
+        >
+           <h2 className="section-title" style={{ marginBottom: '3rem' }}>
+             My Coding <span className="gradient-text">Activity</span>
+           </h2>
+           <div className={styles.ghWrapper}>
+             <div className={styles.ghPlaceholder}>
+                <img 
+                   src="https://ghchart.rshah.org/c8a96e/Sarthak-Khalasi-dev" 
+                   alt="Sarthak's GitHub Contributions" 
+                   className={styles.ghChart}
+                />
+             </div>
            </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

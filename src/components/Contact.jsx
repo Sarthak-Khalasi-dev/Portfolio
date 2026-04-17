@@ -73,23 +73,31 @@ export default function Contact() {
 
     setStatus('sending');
     try {
-      const res = await fetch(FORMSUBMIT_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          subject: form.subject,
-          message: form.message,
-        }),
-      });
-      if (res.ok) {
+      // Replace these placeholders with your actual EmailJS credentials
+      const serviceID = 'YOUR_SERVICE_ID';
+      const templateID = 'YOUR_TEMPLATE_ID';
+      const publicKey = 'YOUR_PUBLIC_KEY';
+
+      const templateParams = {
+        to_name: 'Sarthak Khalasi',
+        from_name: form.name,
+        from_email: form.email,
+        subject: form.subject,
+        message: form.message,
+      };
+
+      // We dynamically import emailjs to keep bundle size small if this component isn't rendered
+      const emailjs = await import('@emailjs/browser');
+      
+      const res = await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      if (res.status === 200) {
         setStatus('sent');
         setForm({ name: '', email: '', subject: '', message: '' });
       } else {
         setStatus('error');
       }
-    } catch {
+    } catch (error) {
+      console.error('EmailJS Error:', error);
       setStatus('error');
     }
   }

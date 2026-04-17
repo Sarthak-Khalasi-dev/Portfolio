@@ -2,6 +2,8 @@
 
 .hero {
   position: relative;
+  width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -354,6 +356,11 @@
   padding: 0.85rem 2.2rem;
 }
 
+.btnHeroResume {
+  min-width: 160px;
+  justify-content: center;
+}
+
 /* Social links */
 .socials {
   display: flex;
@@ -421,17 +428,46 @@
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 600px) {
-  .content {
-    padding-top: 100px;
+@media (max-width: 960px) {
+  .innerContent {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 3rem;
   }
+  .greeting {
+    justify-content: center;
+  }
+  .roleWrap {
+    justify-content: center;
+  }
+  .name {
+    font-size: clamp(3rem, 8vw, 4rem);
+  }
+  .ctas {
+    justify-content: center;
+  }
+  .avatarWrap {
+    width: clamp(240px, 60vw, 320px);
+    margin: 0 auto;
+  }
+}
 
+@media (max-width: 600px) {
+  .innerContent {
+    padding-top: 80px;
+  }
   .ctas {
     flex-direction: column;
+    align-items: center;
   }
-
   .btnHero {
     width: 100%;
+    max-width: 280px;
     justify-content: center;
+  }
+  .btnHeroResume {
+    width: 100%;
+    max-width: 280px;
   }
 }

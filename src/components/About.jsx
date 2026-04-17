@@ -10,13 +10,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FiGithub, FiLinkedin, FiMail, FiDownload } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { SiLeetcode, SiYoutube, SiX } from 'react-icons/si';
 import styles from '../styles/About.module.css';
 
 const stats = [
   { value: '10+', label: 'Projects Built' },
   { value: 'Open', label: 'For Internships' },
-  { value: '20+', label: 'Technologies Used' },
+  { value: '10+', label: 'Technologies Used' },
 ];
 
 function AnimatedSection({ children, delay = 0, className = '' }) {
@@ -94,32 +95,17 @@ export default function About() {
               </div>
             </AnimatedSection>
 
-            {/* GitHub Stats — Real-world proof */}
-            <AnimatedSection delay={0.5}>
-              <div className={styles.githubStats}>
-                <p className={styles.statLabel}>GitHub Contributions</p>
-                <img
-                  src="https://ghchart.rshah.org/c8a96e/Sarthak-Khalasi-dev"
-                  alt="Sarthak's GitHub Contributions"
-                  className={styles.githubChart}
-                />
-              </div>
-            </AnimatedSection>
 
-            {/* Quick links */}
+
+            {/* Quick links — centered social icons only */}
             <AnimatedSection delay={0.6} className={styles.actions}>
-              <a
-                href="https://drive.google.com/file/d/1glv38S0foYU_XBmK3HJfzhjobf2NOxEz/view?usp=sharing"
-                className="btn btn-primary"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FiDownload /> Resume
-              </a>
               <div className={styles.socialRow}>
                 {[
                   { icon: <FiGithub />, href: 'https://github.com/Sarthak-Khalasi-dev', label: 'GitHub' },
                   { icon: <FiLinkedin />, href: 'https://www.linkedin.com/in/sarthak-khalasi-73500439b/', label: 'LinkedIn' },
+                  { icon: <SiLeetcode />, href: 'https://leetcode.com/u/KHALASI01/', label: 'LeetCode' },
+                  { icon: <SiX />, href: 'https://x.com/sarthak_2655', label: 'X (Twitter)' },
+                  { icon: <SiYoutube />, href: 'https://www.youtube.com/@sarthakkhalasi5944', label: 'YouTube' },
                 ].map(({ icon, href, label }) => (
                   <a
                     key={label}
