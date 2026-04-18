@@ -22,7 +22,6 @@ import AIAssistant from './components/AIAssistant';
 import Achievements from './components/Achievements';
 import Hackathons from './components/Hackathons';
 import Certificates from './components/Certificates';
-import ResumeModal from './components/ResumeModal';
 import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 import gsap from 'gsap';
@@ -115,8 +114,6 @@ function App() {
           <section id="certificates"><Certificates /></section>
           <section id="contact"><Contact /></section>
         </main>
-
-        <ResumeModal />
 
         <AIAssistant />
 

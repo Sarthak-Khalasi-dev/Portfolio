@@ -123,7 +123,10 @@ export default function Hero() {
             <Magnetic>
               <button 
                 className={`btn btn-outline ${styles.btnHero} ${styles.btnHeroResume}`}
-                onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('open-resume-modal')); }}
+                onClick={(e) => { 
+                  e.preventDefault(); 
+                  window.open('https://drive.google.com/file/d/1glv38S0foYU_XBmK3HJfzhjobf2NOxEz/view', '_blank'); 
+                }}
               >
                 Resume
               </button>
